@@ -1,0 +1,74 @@
+<div class="background">
+  <title>
+    <h2>Angular Material</h2>
+    
+  </title>
+  
+  <div class="clearfix">
+    
+    <mat-card class="box">
+      <div>
+        
+          <p>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Nome</mat-label>
+              <input style="color: black;" matInput [(ngModel)]="newUser.userName" type="text" name="newuserName" id="newuserName" class="form-control" required>
+            </mat-form-field><br>
+          
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Telefone</mat-label>
+              <input matInput [(ngModel)]="newUser.fone" type="text" matInput placeholder="99999-9999" required mask="(00) 00000-0000">
+              <mat-icon matSuffix></mat-icon>
+            </mat-form-field>
+          
+          </p>
+          <p>
+            <button mat-raised-button color="primary" (click)="addUser()">adicionar</button>
+            <button class="BtnLimpar" mat-raised-button color="primary" (click)="limpar()">Limpar</button>
+          </p>
+        
+      </div>  
+    </mat-card>
+
+    <div class="box-table" style="position: relative;left: 2%;">
+      <mat-card>
+        <div>
+          <label><h3>Agenda Telefonica</h3></label><br><br>
+        </div>
+
+        <mat-form-field appearance="standard">
+          <mat-label>Filtro</mat-label>
+          <input #buscaDescricao type="search" (keyup)="applyFilter($event)" matInput placeholder="Ex. nome">
+        </mat-form-field>
+
+        <div class="mat-elevation-z8" matSort aria-label="Elements" style="width: 700pt;">
+          <table mat-table #table [dataSource]="myDataArray" class="full-width-table" matSort (matSortChange)="sortData($event)" aria-label="Elements">
+            <!-- Id Column -->
+            <ng-container matColumnDef="userName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Nome</th>
+              <td mat-cell *matCellDef="let row">{{row.userName}}</td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="fone">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Telefone</th>
+              <td mat-cell *matCellDef="let row">{{row.fone}}</td> 
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef>Ações</th>
+              <mat-cell *matCellDef="let user">
+                <button mat-button color="warn" (click)="delete(this.user)">Delete</button>
+              </mat-cell>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+          </table>
+        
+        </div>
+      </mat-card>
+      
+    </div>
+  </div>
+  

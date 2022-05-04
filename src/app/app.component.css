@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  .box {
+    float: left;
+    width: auto;
+    margin-left: 55px;
+    margin-top: 140px;
+    padding: 60px;
+  }
+
+  .box-table {
+    float: left;
+    width: auto;
+    margin-top: 90px;
+    padding: 50px;
+  }
+  
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .full-width-table {
+    width: 100%;
+    
+  }
+  
+.BtnLimpar {
+  margin-left: 15px;
+}
+
+h3 {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+  
+
